@@ -1,0 +1,112 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/manhole/protos/SquareManhole.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/kitchen/breakfast/protos/JamJar.proto"
+EXTERNPROTO "/Users/TFG/Documents/TFG/backend/tfg-webots/protos/Mavic2Pro.proto"
+
+WorldInfo {
+  info [
+    "This demonstration shows a DJI Mavic 2 PRO flying over a rural area."
+    "After the drone has taken off, you can control it with the keyboard of your computer."
+  ]
+  title "DJI Mavic 2 PRO"
+  basicTimeStep 8
+  defaultDamping Damping {
+    linear 0.5
+    angular 0.5
+  }
+}
+Viewpoint {
+  orientation -0.03132509357312057 -0.004229724205027985 0.9995002991224087 2.901671340011777
+  position 3.392036511082617 -0.9278446049316036 0.7513423909480075
+  near 0.2
+  follow "Mavic 2 PRO"
+  followSmoothness 0.2
+}
+TexturedBackground {
+  luminosity 3
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 400 400
+  tileSize 400 400
+  appearance PBRAppearance {
+    baseColorMap ImageTexture {
+      url "/Users/TFG/Documents/TFG/images/rsz_58k.jpg"
+    }
+    roughness 1
+    metalness 0
+  }
+}
+SquareManhole {
+  translation 0 0 -0.03
+}
+Mavic2Pro {
+  translation 0 0 0.1
+  rotation 0 0 1 3.141590777218456
+  controllerArgs ["--mode=run"]
+  cameraSlot [
+    Camera {
+          translation 0.04 0 0.0915
+          rotation -1.5 0 1 3.141590777218456
+          children [
+            Pose {
+              translation -0.015 0 0
+              rotation -0.5771968951617173 -0.577656895078166 -0.5771968951617173 -2.093935
+            }
+          ]
+          fieldOfView 1.0472
+          width 256
+          height 128
+          antiAliasing TRUE
+          recognition Recognition {
+            frameColor 0.929412 0.831373 0
+            frameThickness 3
+          }
+        }
+  ]
+}
+JamJar {
+  translation -3 0.0 0
+  rotation 0 0 -1 1.0472
+  mass 0
+}
+
+Solid {
+  translation 1 0 0.1
+  recognitionColors [
+        0.55 0.06 0.06 0.86 0.88 0.9
+      ]
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+      }
+      geometry Box {
+        size 0.1 0.1 0.1
+      }
+    }
+  ]
+}
+
+Solid {
+  translation 2 0 0.1
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColorMap ImageTexture {
+          url "/Users/TFG/Documents/TFG/images/rsz_58k.jpg"
+        }
+        roughness 1
+        metalness 0
+      }
+      geometry Plane {
+        size 1 1
+      }
+    }
+  ]
+}
